@@ -10,10 +10,9 @@ import { Picker } from '@react-native-picker/picker';
 import { ThemedText } from './ThemedText';
 
 export default function Timer() {
-  // Default values set to 25 minutes and 0 seconds
   const [selectedMinutes, setSelectedMinutes] = useState('25');
   const [selectedSeconds, setSelectedSeconds] = useState('0');
-  const [remainingTime, setRemainingTime] = useState(25 * 60); // Default: 25 minutes
+  const [remainingTime, setRemainingTime] = useState(25 * 60);
   const [isRunning, setIsRunning] = useState(false);
   let timer: NodeJS.Timeout | null = null;
 
@@ -44,7 +43,7 @@ export default function Timer() {
 
   const resetTimer = () => {
     stopTimer();
-    setRemainingTime(25 * 60); // Reset to 25 minutes
+    setRemainingTime(25 * 60);
     setSelectedMinutes('25');
     setSelectedSeconds('0');
   };
@@ -58,11 +57,9 @@ export default function Timer() {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
-      
-      {/* Display Timer Countdown */}
+
       <Text style={styles.timerText}>{formatTime(remainingTime)}</Text>
 
-      {/* Time Picker Inputs */}
       {!isRunning && (
         <View style={styles.pickerContainer}>
           <Picker
@@ -88,7 +85,6 @@ export default function Timer() {
         </View>
       )}
 
-      {/* Start, Stop, Reset Buttons */}
       <View style={styles.buttonContainer}>
         {!isRunning ? (
           <TouchableOpacity style={styles.startButton} onPress={startTimer}>
@@ -107,7 +103,6 @@ export default function Timer() {
   );
 }
 
-// Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

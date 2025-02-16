@@ -6,21 +6,16 @@ import TodoList from '@/components/TodoList';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function HomeScreen() {
-  const router = useRouter(); // Used for navigation
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
-      {/* Header Section */}
       <View style={styles.header}>
         <Image
           source={require('../../assets/images/artemis.jpg')}
           style={styles.profileImage}
         />
       </View>
-
-  
-
-      {/* Todo List */}
       <TodoList />
     </View>
   );
