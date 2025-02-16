@@ -30,7 +30,22 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
+        {/* Main Tab Screens */}
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+
+        {/* Register New Task Screen */}
+        <Stack.Screen 
+          name="new-task" 
+          options={{ 
+            title: "New Task", 
+            headerShown: false, 
+            headerStyle: { backgroundColor: '#E5EBEA' }, 
+            contentStyle: { backgroundColor: '#E5EBEA' }
+          }} 
+        />
+
+
+        {/* Not Found Screen */}
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
