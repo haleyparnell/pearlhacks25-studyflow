@@ -4,40 +4,50 @@ import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const activeColor = '#3F7CAC';
+  const inactiveColor = '#B098A4';
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: activeColor,
+        tabBarInactiveTintColor: inactiveColor,
         headerShown: false,
         tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
+        tabBarStyle: {
+          position: 'absolute',
+          backgroundColor: '#E5EBEA',
+          borderTopWidth: 0,
+          shadowOpacity: 0,
+          elevation: 0,
+          paddingTop: 15,
+          borderColor: 'transparent',
+        },
       }}>
       <Tabs.Screen
-        name="index"
+        name="timer"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: '',
+          tabBarIcon: ({ color }) => <IconSymbol size={32} name="timer" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="index"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: '',
+          tabBarIcon: ({ color }) => <IconSymbol size={64} name="house.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="study-partner"
+        options={{
+          title: '',
+          tabBarIcon: ({ color }) => <IconSymbol size={32} name="paperplane.fill" color={color} />,
         }}
       />
     </Tabs>
