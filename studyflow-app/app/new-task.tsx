@@ -11,7 +11,7 @@ export default function NewTask() {
   const [taskName, setTaskName] = useState('');
   const [notes, setNotes] = useState('');
   const [date, setDate] = useState(new Date());
-  const [showDatePicker, setShowDatePicker] = useState(true); // Show on load
+  const [showDatePicker, setShowDatePicker] = useState(true);
 
   const handleSave = () => {
     if (!taskName.trim()) return;

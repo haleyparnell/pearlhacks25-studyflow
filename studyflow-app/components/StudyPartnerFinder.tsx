@@ -19,19 +19,17 @@ const mockPartners = [
 
 export default function StudyPartnerFinder() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedUsers, setSelectedUsers] = useState<number[]>([]); // Track selected users by ID
+  const [selectedUsers, setSelectedUsers] = useState<number[]>([]);
 
-  // Filter study partners based on search input
   const filteredPartners = mockPartners.filter((partner) =>
     partner.course.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Toggle individual user selection
   const toggleSelection = (id: number) => {
     setSelectedUsers((prevSelected) =>
       prevSelected.includes(id)
-        ? prevSelected.filter((userId) => userId !== id) // Remove if already selected
-        : [...prevSelected, id] // Add new selection
+        ? prevSelected.filter((userId) => userId !== id)
+        : [...prevSelected, id]
     );
   };
 
@@ -39,7 +37,7 @@ export default function StudyPartnerFinder() {
     <View style={styles.container}>
       <Text style={styles.title}>Find a Study Partner</Text>
 
-      {/* Search Input */}
+
       <TextInput
         style={styles.searchInput}
         placeholder="Search by course (e.g. COMP 311)"
@@ -48,7 +46,6 @@ export default function StudyPartnerFinder() {
         onChangeText={setSearchQuery}
       />
 
-      {/* Study Partners List */}
       <FlatList
         data={filteredPartners}
         keyExtractor={(item) => item.id.toString()}
@@ -56,7 +53,7 @@ export default function StudyPartnerFinder() {
           <TouchableOpacity
             style={[
               styles.partnerCard,
-              selectedUsers.includes(item.id) && styles.selectedCard, // Apply selection only to this user
+              selectedUsers.includes(item.id) && styles.selectedCard, 
             ]}
             onPress={() => toggleSelection(item.id)}
           >
@@ -71,7 +68,6 @@ export default function StudyPartnerFinder() {
         )}
       />
 
-      {/* No Results Message */}
       {filteredPartners.length === 0 && (
         <Text style={styles.noResults}>No partners found for this course.</Text>
       )}

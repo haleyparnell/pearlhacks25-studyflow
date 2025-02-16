@@ -24,7 +24,6 @@ export default function TodoList() {
 
   return (
     <GestureHandlerRootView style={styles.container}>
-      {/* Header with Add Button */}
       <View style={styles.header}>
         <Text style={styles.title}>StudyFlow</Text>
         <TouchableOpacity style={styles.addButton} onPress={() => router.push('/new-task')}>
@@ -32,17 +31,14 @@ export default function TodoList() {
         </TouchableOpacity>
       </View>
 
-      {/* No Tasks Message */}
       {tasks.length === 0 && <Text style={styles.emptyMessage}>No tasks yet. Add some!</Text>}
 
-      {/* Task List */}
       <FlatList
         data={tasks}
         keyExtractor={(task) => task.id.toString()}
         renderItem={({ item }) => (
           <Swipeable renderRightActions={() => renderRightActions(item.id)}>
             <View style={styles.taskItem}>
-              {/* Checkbox */}
               <TouchableOpacity onPress={() => toggleCompleted(item.id)} style={styles.checkBox}>
                 <Ionicons
                   name={item.completed ? 'checkbox' : 'square-outline'}
@@ -50,8 +46,6 @@ export default function TodoList() {
                   color={item.completed ? '#B098A4' : '#000'}
                 />
               </TouchableOpacity>
-
-              {/* Task Details */}
               <View style={styles.taskDetails}>
                 <Text style={[styles.taskText, item.completed && styles.completedText]}>
                   {item.text}
@@ -59,7 +53,6 @@ export default function TodoList() {
                 {item.notes ? <Text style={styles.taskNotes}>{item.notes}</Text> : null}
               </View>
 
-              {/* Date (aligned right) */}
               <Text style={styles.taskDate}>{item.date}</Text>
             </View>
           </Swipeable>
